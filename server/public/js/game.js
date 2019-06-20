@@ -10,7 +10,7 @@ const config = {
   width: 800,
   height: 600,
   scene: {
-    preload: preload,
+    preload,
     create,
     update
   }

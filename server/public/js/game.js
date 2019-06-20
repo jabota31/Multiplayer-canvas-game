@@ -1,10 +1,16 @@
+const preload = () => {}
+ 
+const create = () => {}
+ 
+const update = () => {}
+
 const config = {
   type: Phaser.AUTO,
   parent: 'phaser-example',
   width: 800,
   height: 600,
   scene: {
-    preload,
+    preload: preload,
     create,
     update
   }
@@ -12,8 +18,3 @@ const config = {
  
 const game = new Phaser.Game(config);
  
-const preload = () => {}
- 
-const create = () => {}
- 
-const update = () => {}

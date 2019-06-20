@@ -2,8 +2,15 @@ const path = require('path');
 const jsdom = require('jsdom');
 const express = require('express');
 const app = express();
+
 const server = require('http').Server(app);
+const io = require('socket.io').listen(server);
+
 const { JSDOM } = jsdom;
+
+const Datauri = require('datauri');
+ 
+const datauri = new Datauri();
  
 app.use(express.static(__dirname + '/public'));
  
@@ -22,6 +29,13 @@ function setupAuthoritativePhaser() {
     pretendToBeVisual: true
   }).then((dom) => {
     dom.window.gameLoaded = () => {
+      dom.window.URL.createObjectURL = (blob) => {
+        if (blob){
+          return datauri.format(blob.type, blob[Object.getOwnPropertySymbols(blob)[0]]._buffer).content;
+        }
+      };
+      dom.window.URL.revokeObjectURL = (objectURL) => {};
+      dom.window.io = io;
       server.listen(3333, function () {
         console.log(`Listening on ${server.address().port}`);
       });

@@ -8,5 +8,8 @@
   },
   "author": "Markgabe <mgabriel@id.uff.br>",
   "license": "ISC",
-  "repository": "https://github.com/jabota31/Multiplayer-canvas-game.git"
+  "repository": "https://github.com/jabota31/Multiplayer-canvas-game.git",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
